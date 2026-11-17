@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WARCoin (WAR) - Add to Wallet</title>
+  <style>
+    body { font-family: sans-serif; background: #0f172a; color: #fff; text-align: center; padding: 40px 20px; }
+    img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #eab308; margin-bottom: 16px; }
+    button { background: #eab308; color: #000; border: none; padding: 14px 28px; font-size: 16px; font-weight: bold; border-radius: 12px; cursor: pointer; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <img src="https://raw.githubusercontent.com/Daemonminwar/WARCoin/main/1794507734748.jpg" alt="WARCoin">
+  <h1>WARCoin (WAR)</h1>
+  <p>BNB Smart Chain (BEP-20)</p>
+  <button onclick="addToken()">+ เพิ่มเหรียญ WAR พร้อมโลโก้เข้ากระเป๋า</button>
+
+  <script>
+    async function addToken() {
+      if (!window.ethereum) return alert('กรุณาเปิดลิงก์นี้ในเบราว์เซอร์ของแอป MetaMask หรือ Trust Wallet');
+      try {
+        await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0x851A20E8F1B0BBE90B41350412f77781bB96122f',
+              symbol: 'WAR',
+              decimals: 0,
+              image: 'https://raw.githubusercontent.com/Daemonminwar/WARCoin/main/1794507734748.jpg',
+            },
+          },
+        });
+      } catch (e) { alert(e.message); }
+    }
+  </script>
+</body>
+</html>
